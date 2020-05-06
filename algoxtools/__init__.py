@@ -82,7 +82,7 @@ def cover( array, row, col, level ):
     META, COVERCOUNT, SOLUTIONCOUNT = -1, -1, 0
     ROW, COL = 0 ,1
 
-    array[ META, level + 1, VALUE ] = row
+    array[ META, level, VALUE ] = row
     array[ META, COVERCOUNT, VALUE ] += array[ row, INDEX, VALUE ]
 
     j = col
