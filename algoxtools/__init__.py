@@ -3,7 +3,7 @@ from numba import njit, objmode, types
 from numba.typed import List
 from numba.pycc import CC
 
-cc = CC('algoxtools32')
+cc = CC('algoxtoolsp')
 cc.verbose = True
 
 @cc.export('annex_row', 'void( i2[:,:,:], i2, i2[:] )')
@@ -352,7 +352,7 @@ def search(array):
     array[ INDEX, INDEX, VALUE ] -= 1
     
 if __name__ == '__main__':
-    cc.compile()
+    #cc.compile()
     """
     #import os
     #os.environ['NUMBA_DISABLE_JIT'] = "1"
