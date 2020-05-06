@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="algoxtools",
-    version="0.1.0",
+    version="0.1.1",
     author="Symen Hillebrand Hovinga",
     author_email="itsfull@hotmail.com",
     description="A Fast Algorithm X implementation in Python using Numpy and Numba",
