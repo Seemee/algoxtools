@@ -31,6 +31,10 @@ axt.annex_row( array, 6, np.array([ 2, 7 ], dt ) )
 print( 'Solution:' )
 axt.search(array)
 ```
+```
+Solution:
+[2 4 6]
+```
 ## Usage with main loop at interpreter level:
 ```
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
@@ -50,6 +54,11 @@ def search( array ):
 
 print('Solution:')
 search(array)
+```
+```
+Solution:
+[2 4 6]
+```
 print('Total no. of solutions:', end=' ')
 print( array[ META, SOLUTIONCOUNT, VALUE ] )
 ```
