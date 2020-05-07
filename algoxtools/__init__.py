@@ -57,8 +57,8 @@ def annex_row( array, cur_row, col_arr ):
     array[ cur_row, col_index[R], L ] = col_index[L]
     array[ cur_row, col_index[L], R ] = col_index[R]
 
-@cc.export('init','i2[:,:,:](i2, i2)')
-@njit('i2[:,:,:](i2, i2)')
+#@cc.export('init','i2[:,:,:](i2, i2)')
+#@njit('i2[:,:,:](i2, i2)')
 def init( rows, cols ):
     L, R, U, D, LINKED, VALUE =  range(6)  
     INDEX = 0
@@ -335,7 +335,6 @@ def mcr_cover(array):
 @njit( 'void( i2[:] )', nogil=True)     
 def fsolution(solution):      
     print(solution)
-    pass
     
 @cc.export('search', 'void( i2[:,:,:] )')
 @njit( 'void( i2[:,:,:] )', nogil=True )
@@ -344,7 +343,8 @@ def search(array):
     array[ INDEX, INDEX, VALUE ] += 1
     if isempty(array):
         level = array[ INDEX, INDEX, VALUE ]
-        fsolution( array[ META, 1 : level, VALUE ] )
+        if array[ META, SOLUTIONCOUNT, VALUE ] <= 5:
+            fsolution( array[ META, 1 : level, VALUE ] )
     else:
         while mcr_cover(array):
             search(array)
