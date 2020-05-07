@@ -69,6 +69,6 @@ Above examples are enclosed in jupyter notebook format in the [examples folder](
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered with algoxtools:
 In the example column 1 is chosen since it is the first column to have the fewest nodes (2).<br/>
 ![image](https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG)
-In order to cover collumns (1,4,7) and rows (A,B,C,E,F) these can be unlinked as rows and columns at once without unlinking all the individual nodes, since tmost nodes are not linked to any other uncovered nodes
+In order to cover collumns (1,4,7) and rows (A,B,C,E,F) these can be unlinked as rows and columns at once without unlinking all the individual nodes, since tmost nodes are not linked to any other uncovered nodes.<br/>
 ![image](https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes.png) 
 In larger models with more rows, only what I call 'loose' nodes, the ones in the red boxes, (C5,E2,E3,E6 and F2) remain to be unlinked individually since they could still be attached to nodes in other rows.
