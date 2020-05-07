@@ -12,7 +12,8 @@ The array organisation is sparse and uses 16 bit ints. If needed, int size can b
 ```
 pip install algoxtools
 ```
-## Api example
+## Api example 
+Data taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) 
 ```
 import algoxtools as axt
 import numpy as np
