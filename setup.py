@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setuptools.setup(
     name="algoxtools",
     version="0.1.3",
-    author="Symen Hillebrand Hovinga",
+    author="Symen Hovinga",
     author_email="itsfull@hotmail.com",
     description="A Fast Algorithm X implementation in Python using Numpy and Numba",
     long_description=long_description,
