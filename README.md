@@ -63,3 +63,4 @@ Solution:
 Total no. of solutions: 1
 ```
 
+Above examples are enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
