@@ -67,10 +67,10 @@ Above examples are enclosed in jupyter notebook format in the [examples folder](
 
 ## Quick api reference guide:
 ### array = init( rows, columns )
-Initializes algoxtools array.
-Internally the number of columns is one higher than the given value, and is used for indexing. 
-The internal number of rows is a value two higher than the given value, and is used for indexing and storing meta data
-rows and columns cannot exceed the np.int16 maximum value
+Initializes algoxtools array.<br/>
+Internally the number of columns is one higher than the given value, and is used for indexing.<br/>
+The internal number of rows is a value two higher than the given value, and is used for indexing and storing meta data<br/>
+Rows and columns cannot exceed the np.int16 maximum value
 ### Example:
 ```
 import algoxtools as axt
@@ -78,9 +78,9 @@ array = axt.init( 6, 7 )
 ```
 
 ### annex_row( array, row_number, numpy.array( column 1, column 2, .. column n , numpy.int16) )
-Assigns linked nodes to the specified columns in a specific row. 
-row_number and col_list values should be higher than 1 and cannot exceed numpy.int16 maximum value - 1 (+32,766)
-In order to solve an exact cover, all rows must contain at least one column.
+Assigns linked nodes to the specified columns in a specific row.<br/> 
+row_number and col_list values should be higher than 1 and cannot exceed numpy.int16 maximum value - 1 (+32,766)<br/>
+In order to solve an exact cover, all rows must contain at least one column.<br/>
 ### Example:
 ```
 axt.annex_row( array, 4, np.array([ 3, 5, 6 ], np.int16 ) )
@@ -97,11 +97,11 @@ if axt.isempty( array ):
 ```
 
 ### bool mcr_cover( array )
-Minimum column rows cover (Or Most-constrained column rows cover)
-Initialy selects the first column with the least number of nodes and the first row in that column and covers that entry.
-In subsequent calls mcr_cover selects a next row and covers it until all rows untill the last row is reached. 
-Returns a boolean False if no more rows are available, else returns True 
-This function should be balanced by uncover
+Minimum column rows cover (Or Most-constrained column rows cover)<br/>
+Initialy selects the first column with the least number of nodes and the first row in that column and covers that entry.<br/>
+In subsequent calls mcr_cover selects a next row and covers it until all rows untill the last row is reached.<br/>
+Returns a boolean False if no more rows are available, else returns True<br/>
+This function should be balanced by uncover<br/>
 ### Example:
 ```
 while axt.mcr_cover( array ):
