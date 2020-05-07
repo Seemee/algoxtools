@@ -39,6 +39,7 @@ Solution:
 ```
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
 ii = array[ INDEX, INDEX ]
+
 def search( array ):
     ii[VALUE] += 1 # Level up
     if axt.isempty(array):
