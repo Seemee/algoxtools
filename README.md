@@ -153,7 +153,7 @@ U       Up link pointer             2
 D       Down link pointer           3
 LINKED  Node or index link status   4
 VALUE   Stores miscellaneous values 5 (-1)
-
+```
 ## &ast; Unlinking en relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
 In the example the entry at column 1, row 1 is heuristically chosen to be covered.<br/>
