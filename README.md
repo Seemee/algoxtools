@@ -66,7 +66,7 @@ Total no. of solutions: 1
 Above examples are enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
 
 ## Quick api reference guide:
-## array = init( rows, columns )
+### array = init( rows, columns )
 Initializes algoxtools array.
 Internally the number of columns is one higher than the given value, and is used for indexing. 
 The internal number of rows is a value two higher than the given value, and is used for indexing and storing meta data
@@ -77,7 +77,7 @@ import algoxtools as axt
 array = axt.init( 6, 7 )
 ```
 
-## annex_row( array, row_number, numpy.array( column 1, column 2, .. column n , numpy.int16) )
+### annex_row( array, row_number, numpy.array( column 1, column 2, .. column n , numpy.int16) )
 Assigns linked nodes to the specified columns in a specific row. 
 row_number and col_list values should be higher than 1 and cannot exceed numpy.int16 maximum value - 1 (+32,766)
 In order to solve an exact cover, all rows must contain at least one column.
@@ -86,7 +86,7 @@ In order to solve an exact cover, all rows must contain at least one column.
 axt.annex_row( array, 4, np.array([ 3, 5, 6 ], np.int16 ) )
 ```
 
-## bool isempty (array)
+### bool isempty (array)
 Returns boolean True if an exact cover is reached else returns False
 ### Example:
 ```
@@ -96,7 +96,7 @@ if axt.isempty( array ):
     print( array[ -1, 1:level, -1 ]
 ```
 
-## bool mcr_cover( array )
+### bool mcr_cover( array )
 Minimum column rows cover (Or Most-constrained column rows cover)
 Initialy selects the first column with the least number of nodes and the first row in that column and covers that entry.
 In subsequent calls mcr_cover selects a next row and covers it until all rows untill the last row is reached. 
@@ -109,18 +109,17 @@ while axt.mcr_cover( array ):
     search( array )
     axt.uncover( array )
 ```
-uncover( array )
+### void uncover( array )
 Uncover the current row and colum of the array selected by mcr_cover 
 
-void search( array )
+### void search( array )
 internal search function used for testing, prints the first 5 exact covers, if available
 ### Example:
 ```
 axt.search( array )
 ```
-
+### Internal organisation of algoxtools array:
 ```
-Internal organisation of algoxtools array
 Index,Index------------- Column Indices -----------------------
 
    |     Node 1,1     Node 1,2     Node 1,Columns
