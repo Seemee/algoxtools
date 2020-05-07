@@ -69,9 +69,9 @@ Above examples are enclosed in jupyter notebook format in the [examples folder](
 ## Quick api reference guide:
 ### array = init( rows, columns )
 Initializes algoxtools array.<br/>
-Internally the number of columns is one higher than the given value, and is used for indexing.<br/>
-The internal number of rows is a value two higher than the given value, and is used for indexing and storing meta data<br/>
-Rows and columns cannot exceed the np.int16 maximum value
+Internally the number of columns is one higher than the given value and is used for indexing.<br/>
+The internal number of rows is two higher than the given value and is used for indexing and storing meta data<br/>
+Rows and columns numbers cannot exceed the np.int16 maximum value - 1 (+32,766)
 ### Example:
 ```
 import algoxtools as axt
@@ -80,7 +80,7 @@ array = axt.init( 6, 7 )
 
 ### annex_row( array, row_number, numpy.array( column 1, column 2, .. column n , numpy.int16) )
 Assigns linked nodes to the specified columns in a specific row.<br/> 
-row_number and col_list values should be higher than 1 and cannot exceed numpy.int16 maximum value - 1 (+32,766)<br/>
+row_number and col_list values should be higher than 1 and cannot exceed numpy.int16 maximum value - 1<br/>
 In order to solve an exact cover, all rows must contain at least one column.<br/>
 ### Example:
 ```
