@@ -135,7 +135,7 @@ indices     |               |                |
 
    |
 
-   |	 Node Rows,1  Node Rows,2  Node Rows,Columns
+   |	 Node Rows,1     Node Rows,2     Node Rows,Columns
 
 -1,0 --------------------------- Meta data ----------------------  -1, -1
 ```
