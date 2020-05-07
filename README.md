@@ -9,7 +9,8 @@ The array organisation is sparse and uses 16 bit ints. If needed, int size can b
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Seemee/algoxtools/299b8f1cd71c766032fb969ab2a77308fc2f59c8?filepath=examples%2Falgoxtools%20api%20usage%20example%20in%20ipynb.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/119zcx-mmnLA333ifXJFVjbB9aRKbiU6S?usp=sharing)
 
-#Api example
+## Api example
+```
 import algoxtools as axt
 import numpy as np
 
@@ -25,9 +26,9 @@ axt.annex_row( array, 6, np.array([ 2, 7 ], dt ) )
 
 print( 'Solution:' )
 axt.search(array)
-
-# Usage with main loop at interpreter level:
-
+```
+## Usage with main loop at interpreter level:
+```
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
 ii = array[ INDEX, INDEX ]
 def search( array ):
@@ -47,3 +48,4 @@ print('Solution:')
 search(array)
 print('Total no. of solutions:', end=' ')
 print( array[ META, SOLUTIONCOUNT, VALUE ] )
+```
