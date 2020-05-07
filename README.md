@@ -8,3 +8,42 @@ The api is organized in a way that the main search loop can be kept at Python in
 The array organisation is sparse and uses 16 bit ints. If needed, int size can be easily adapted.<br/>Dynamic allocation of nodes could further optimize use of memory and squeeze out a bit of performance gain, but remains to be implemented.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Seemee/algoxtools/299b8f1cd71c766032fb969ab2a77308fc2f59c8?filepath=examples%2Falgoxtools%20api%20usage%20example%20in%20ipynb.ipynb) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/119zcx-mmnLA333ifXJFVjbB9aRKbiU6S?usp=sharing)
+
+#Api example
+import algoxtools as axt
+import numpy as np
+
+array = axt.init( 6, 7 )
+dt = np.int16
+# Rows and cols start from 1!
+axt.annex_row( array, 1, np.array([ 1, 4, 7 ], dt ) )
+axt.annex_row( array, 2, np.array([ 1, 4 ], dt ) )
+axt.annex_row( array, 3, np.array([ 4, 5, 7 ], dt ) )
+axt.annex_row( array, 4, np.array([ 3, 5, 6 ], dt ) )
+axt.annex_row( array, 5, np.array([ 2, 3, 6, 7 ], dt ) )
+axt.annex_row( array, 6, np.array([ 2, 7 ], dt ) )
+
+print( 'Solution:' )
+axt.search(array)
+
+# Usage with main loop at interpreter level:
+
+INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+ii = array[ INDEX, INDEX ]
+def search( array ):
+    ii[VALUE] += 1 # Level up
+    if axt.isempty(array):
+        # Got a solution, do something with it.. like print only the first 5 sols
+        if array[ META, SOLUTIONCOUNT, VALUE ] <= 5:
+            print( array[ META, SOLUTIONCOUNT, VALUE ],
+                  array[ META, SOLUTION : ii[VALUE], VALUE ] )
+    else:
+        while axt.mcr_cover(array):
+            search(array) # Recurse
+            axt.uncover(array)
+    ii[VALUE] -= 1 # Level down
+
+print('Solution:')
+search(array)
+print('Total no. of solutions:', end=' ')
+print( array[ META, SOLUTIONCOUNT, VALUE ] )
