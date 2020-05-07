@@ -1,5 +1,5 @@
 import numpy as np
-from numba import njit, objmode, types
+from numba import njit
 from numba.typed import List
 from numba.pycc import CC
 
@@ -8,15 +8,15 @@ cc.verbose = True
 
 @cc.export('annex_row', 'void( i2[:,:,:], i2, i2[:] )')
 @njit( 'void( i2[:,:,:], i2, i2[:] )')
-def annex_row( array, cur_row, col_list ):
+def annex_row( array, cur_row, col_arr ):
     L, R, U, D, LINKED, VALUE =  range(6)  
     INDEX = 0
     prv_col = -1
     ncol_list = List() #[]
     ncol_list.append(INDEX)
-    #[ ncol_list.append( col ) for col in col_list ]
-    for col in range(len(col_list)) :
-        ncol_list.append( col_list[col] )
+    col_arr = col_arr.astype( np.int16 )
+    for col in range(len(col_arr)) :
+        ncol_list.append( col_arr[col] )
     first_col = ncol_list[0]
     last_col = 0
     for cur_col in ncol_list:
@@ -334,7 +334,7 @@ def mcr_cover(array):
 
 @njit( 'void( i2[:] )', nogil=True)     
 def fsolution(solution):      
-    #print(solution)
+    print(solution)
     pass
     
 @cc.export('search', 'void( i2[:,:,:] )')
@@ -353,20 +353,18 @@ def search(array):
     
 if __name__ == '__main__':
     #cc.compile()
-    """
-    #import os
-    #os.environ['NUMBA_DISABLE_JIT'] = "1"
-    """
+
     VALUE = 5
     META, SOLUTIONCOUNT = -1, 0
 
     array = init( 6, 7 )
-    annex_row( array, 1, np.array([ 1, 4, 7 ], np.int16 ) )
-    annex_row( array, 2, np.array([ 1, 4 ],np.int16 ) )
-    annex_row( array, 3, np.array([ 4, 5, 7 ],np.int16 ) )
-    annex_row( array, 4, np.array([ 3, 5, 6 ],np.int16 ) )
-    annex_row( array, 5, np.array([ 2, 3, 6, 7 ],np.int16 ) )
-    annex_row( array, 6, np.array([ 2, 7 ],np.int16 ) )
+    dt = np.int16
+    annex_row( array, 1, np.array( [ 1, 4, 7 ], dt ) )
+    annex_row( array, 2, np.array( [ 1, 4 ], dt ) )
+    annex_row( array, 3, np.array([ 4, 5, 7 ], dt ) )
+    annex_row( array, 4, np.array([ 3, 5, 6 ], dt ) )
+    annex_row( array, 5, np.array([ 2, 3, 6, 7 ], dt ) )
+    annex_row( array, 6, np.array([ 2, 7 ], dt ) )
 
     search( array )
     print(array[ META, SOLUTIONCOUNT, VALUE ])
