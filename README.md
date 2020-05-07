@@ -3,7 +3,7 @@
 #### Open sourced implementations of [Algorithm X](https://www.ocf.berkeley.edu/~jchu/publicportal/sudoku/0011047.pdf) in Python are plentiful. The justification of creating algoxtools is that although existing packages are compact and elegantly coded in object oriented Python, a drawback is that for more complex cover problems processing the Python interpreted objects used in the NP-complete algorithm becomes slow. Since the use of classes has a poor relation with compilers such as Numba, resulting speed gains are discouraging.<br/> 
 In algoxtools the web of Knuth's Dancing Links nodes is embedded in a numpy array. Since numpy arrays are heterogenous by design and boast high performance libraries, algoxtools aims to come more close to machine level, resulting in performance gain.<br/> 
 The array space used by algoxtools is in 3d, arranged in rows, columns, the third dimension being used for substitutes of class attributes such as pointers and index values. Attributes used are Left, Right, Up, Down, Linked and Value. Headers for rows and columns as well as meta data such as recursion level, current row, column and solution at hand are all embedded in the array as well, making the variables as easy to pass as a conventional object.<br/>
-Algoxtools facilitates unlinking and relinking of rows and columns at once by eleborate indexing which avoids handling each individual node chain.<br/>
+Algoxtools facilitates unlinking and relinking of rows and columns at once by eleborate indexing which avoids handling each individual node chain*.<br/>
 The api is organized in a way that the main search loop can be kept at Python interpreter level so that search results can be easily further processed at this even.<br/>
 The array organisation is sparse and uses 16 bit ints. If needed, int size can be easily adapted.<br/>Dynamic allocation of nodes could further optimize use of memory and squeeze out a bit of performance gain, but remains to be implemented.
 
@@ -64,3 +64,11 @@ Total no. of solutions: 1
 ```
 
 Above examples are enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
+
+* unlinking en relinking nodes:
+The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered with algoxtools:
+In the example column 1 is chosen since it is the first column to have the fewest nodes (2).<br/>
+![image](https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG)
+In order to cover collumns (1,4,7) and rows (A,B,C,E,F) these can be unlinked as rows and columns at once without unlinking all the individual nodes, since tmost nodes are not linked to any other uncovered nodes
+![image](https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes.png) 
+In larger models with more rows, only what I call 'loose' nodes, the ones in the red boxes, (C5,E2,E3,E6 and F2) remain to be unlinked individually since they could still be attached to nodes in other rows.
