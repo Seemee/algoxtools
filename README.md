@@ -158,7 +158,7 @@ VALUE   Stores miscellaneous values 5 (-1)
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
 In the example the entry at column 1, row 1 is heuristically chosen to be covered.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG" width="300"><br/>
-Columns (1,4,7) and rows (A,B,C,E,F) of the red ones can be unlinked just by row/column index without unlinking all the individual nodes in red, since they are not linked to any other outside nodes.<br/>
+Since the nodes at the red ones in Columns (1,4,7) and rows (A,B,C,E,F)  are not linked to any other outside nodes. Rows and columns are unlinked just by row and column index without unlinking each individual node.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes%20example.png" width="300"><br/> 
-In larger models with more rows, only what I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated in an unlinked row but not in an unlinked column, so the are possibly attached to nodes in other rows in that column, so they need to be unlinked individually.<br/>
-NB Only the down link of the upper node and the up link of the down node need to change, right and left links do not need to affected since they have no extenral entries. This is a practice common to most other implementations of Algorithm X.
+In larger models with more rows, only the what I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated in an unlinked row but not in an unlinked column, so they are possibly attached to nodes in other rows in that column and are unlinked individually.<br/>
+NB common in most other implementations of Algorithm X only the down link of the upper node and the up link of the down nodes are changed, right and left links do not need to be modified since they are not externally referenced.
