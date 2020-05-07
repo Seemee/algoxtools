@@ -54,11 +54,12 @@ def search( array ):
 
 print('Solution:')
 search(array)
+print('Total no. of solutions:', end=' ')
+print( array[ META, SOLUTIONCOUNT, VALUE ] )
 ```
 ```
 Solution:
 [2 4 6]
+Total no. of solutions: 1
 ```
-print('Total no. of solutions:', end=' ')
-print( array[ META, SOLUTIONCOUNT, VALUE ] )
-```
+
