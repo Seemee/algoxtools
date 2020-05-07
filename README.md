@@ -86,7 +86,7 @@ In order to solve an exact cover, all rows must contain at least one column.<br/
 axt.annex_row( array, 4, np.array([ 3, 5, 6 ], np.int16 ) )
 ```
 
-### bool isempty(array)
+### bool isempty( array )
 Returns boolean True if an exact cover is reached else returns a False
 ### Example:
 ```
@@ -142,6 +142,17 @@ Specific array values
 Recursion level:      array&#91; 0, 0,-1 &#93;
 Solution count:       array&#91;-1, 0, 0 &#93;
 Solution row numbers: array&#91;-1, 1: recursion_level, -1&#93;
+
+### Node attributes
+```
+Name    Description               Value
+---------------------------------------
+L       Left link pointer           0
+R       Right link pointer          1
+U       Up link pointer             2
+D       Down link pointer           3
+LINKED  Node or index link status   4
+VALUE   Stores miscellaneous values 5 
 
 ## &ast; Unlinking en relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
