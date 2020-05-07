@@ -1,5 +1,5 @@
 # algoxtools 
-# A fast implementation of Donald Knuth's Algorithm X in Python by using Numpy and Numba.
+## A fast implementation of Donald Knuth's Algorithm X in Python by using Numpy and Numba.
 ### Open source implementations of [Algorithm X](https://www.ocf.berkeley.edu/~jchu/publicportal/sudoku/0011047.pdf)  in Python are plentiful. The justification of creating this module is that existing packages are all based on the beautiful object oriented example introduced by dr. Knuth. Python classes have a poor relation with compilers such as Numba however, resulting in discouraging speed gains.<br/> 
 In algoxtools the web of Dancing Links nodes are embedded in a numpy array. Since the array is heterogenous, it is able to come more close to machine level when compiled, thus gaining performance.<br/>
 The array space has three dimensions nl. row, column and substitutes for class attributes. Attributes used are Left, Right, Up, Down, Linked and Value. Headers for rows and columns as well as meta data such as recursion level, current row, column and solution at hand are all embedded in the array, making it easy to pass like a more conventional object.<br/>
