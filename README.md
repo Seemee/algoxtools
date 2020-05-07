@@ -67,8 +67,9 @@ Above examples are enclosed in jupyter notebook format in the [examples folder](
 
 ## &ast; Unlinking en relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
-Column 1, row 1 are heuristically chosen to be covered.<br/>
+In the example the entry at column 1, row 1 is heuristically chosen to be covered.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG" width="300"><br/>
-Columns (1,4,7) and rows (A,B,C,E,F) of the red ones can be unlinked by row/column index without unlinking all the individual nodes, since they are not linked to any other outside nodes.<br/>
+Columns (1,4,7) and rows (A,B,C,E,F) of the red ones can be unlinked just by row/column index without unlinking all the individual nodes, since they are not linked to any other outside nodes.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes.png" width="300"><br/> 
-In larger models with more rows, only what I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated not in both an unlinked row and an unlinked column so the are possibly attached to nodes in other rows need to be unlinked individually.
+In larger models with more rows, only what I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated in an unlinked row but not in an unlinked column, so the are possibly attached to nodes in other rows in that column, so they need to be unlinked individually.<br/>
+Since the row has no external entries left or right these links do not need to affected, only the down link of the upper node and the up link of the down node need to change, which is a practice common to most other implementations of Algorithm X.
