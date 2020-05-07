@@ -139,7 +139,8 @@ indices     |               |                |
 
 -1,0 --------------------------- Meta data ----------------------  -1, -1
 ```
-Specific array values
+NB The row column indices are basically unlinked nodes keeping track of entry positions and node count
+### Specific array values
 Recursion level:      array&#91; 0, 0,-1 &#93;
 Solution count:       array&#91;-1, 0, 0 &#93;
 Solution row numbers: array&#91;-1, 1: recursion_level, -1&#93;
