@@ -66,7 +66,7 @@ Total no. of solutions: 1
 Above examples are enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
 
 ## &ast; Unlinking en relinking nodes:<br/>
-The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered with algoxtools:<br/>
+The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
 Column 1, row 1 are heuristically chosen to be covered.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG" width="300"><br/>
 Both the columns (1,4,7) and rows (A,B,C,E,F) of the ones in red can be unlinked as rows and columns at once without unlinking all the individual nodes, since they are not linked to outside nodes.<br/>
