@@ -65,7 +65,7 @@ Total no. of solutions: 1
 
 Above examples are enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
 
-##&ast; Unlinking en relinking nodes:<br/>
+## &ast; Unlinking en relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered with algoxtools:<br/>
 Column 1, row 1 are heuristically chosen to be covered.<br/>
 ![image](https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG)<br/>
