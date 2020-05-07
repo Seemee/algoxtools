@@ -120,23 +120,23 @@ axt.search( array )
 ```
 ### Internal organisation of algoxtools array:
 ```
-Index,Index------------- Column Indices -----------------------
+0,0 Index,Index------------- Column Indices -----------------------  0,-1
 
-   |     Node 1,1     Node 1,2     Node 1,Columns
+   |     Node 1,1        Node 1,2        Node 1,Columns
 
-   |	 Node 2,1     Node 2,2     Node 2,Columns
+   |	 Node 2,1        Node 2,2        Node 2,Columns
 
   Row 
 
-indices     |             |              |
+indices     |               |                |
 
-   |        |             |              |
+   |        |               |                |
 
    |
 
    |	 Node Rows,1  Node Rows,2  Node Rows,Columns
 
-    --------------------------- Meta data ----------------------
+-1,0 --------------------------- Meta data ----------------------  -1, -1
 ```
 Specific array values
 Recursion level:      array&#91; 0, 0,-1 &#93;
@@ -152,7 +152,7 @@ R       Right link pointer          1
 U       Up link pointer             2
 D       Down link pointer           3
 LINKED  Node or index link status   4
-VALUE   Stores miscellaneous values 5 
+VALUE   Stores miscellaneous values 5 (-1)
 
 ## &ast; Unlinking en relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
