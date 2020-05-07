@@ -161,5 +161,5 @@ In the example the entry at column 1, row 1 is heuristically chosen to be covere
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG" width="300"><br/>
 Since the nodes at the red ones in Columns (1,4,7) and rows (A,B,C,E,F)  are not linked to any other outside nodes. Rows and columns are unlinked just by row and column index without unlinking each individual node.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes%20example.png" width="300"><br/> 
-In larger models with more rows, only the what I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated in an unlinked row but not in an unlinked column, so they are possibly attached to nodes in other rows in that column and are unlinked individually.<br/>
+What I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated in an unlinked row but not in an unlinked column, so they are possibly attached to external nodes and therefore need to be unlinked individually<br/>
 NB common in most other implementations of Algorithm X only the down link of the upper node and the up link of the down nodes are changed, right and left links do not need to be modified since they are not externally referenced.
