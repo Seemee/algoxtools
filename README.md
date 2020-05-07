@@ -86,8 +86,8 @@ In order to solve an exact cover, all rows must contain at least one column.
 axt.annex_row( array, 4, np.array([ 3, 5, 6 ], np.int16 ) )
 ```
 
-### bool isempty (array)
-Returns boolean True if an exact cover is reached else returns False
+### bool isempty(array)
+Returns boolean True if an exact cover is reached else returns a False
 ### Example:
 ```
 if axt.isempty( array ):
