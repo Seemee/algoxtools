@@ -32,6 +32,7 @@ axt.annex_row( array, 6, np.array([ 2, 7 ], dt ) )
 
 # Get result
 ii = array[ INDEX, INDEX ]
+print('Solution:')
 while axt.exact_cover( array ):
     print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
 ```
