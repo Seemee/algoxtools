@@ -84,10 +84,10 @@ if axt.isempty( array ):
 
 ### bool mcr_cover( array )
 Minimum column rows cover (Or Most-constrained column rows cover) is a composite of internal min_col() and cover() functions.<br/>
-Initialy it selects the first column with the least number of nodes and the first row in that column and covers all nodes which are orthogonally linked to that entry.<br/>
+Initialy it selects the first column with the least number of nodes and the first row in that column as an entry, after which it covers the nodes linked to that entry.<br/>
 In subsequent calls mcr_cover selects a next row and covers it until all rows are depleted.<br/>
 Returns a boolean False if no more rows are available, else returns True<br/>
-This function should be balanced by uncover<br/>
+Balanced by Uncover, this function be used recurively as well as in a flat loop.<br/>
 ### Example:
 ```
 while axt.mcr_cover( array ):
