@@ -40,7 +40,7 @@ while axt.exact_cover( array ):
 Solution:
 [2 4 6]
 ```
-Above examples is enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
+Above example is enclosed in jupyter notebook format in the [examples folder](https://github.com/Seemee/algoxtools/tree/master/examples)
 
 ## Quick api reference guide:
 ### array = init( rows, columns )
