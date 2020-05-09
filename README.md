@@ -111,7 +111,7 @@ indices     |               |                |
 -1,0 --------------------------- Meta data ----------------------  -1, -1
 ```
 NB The row column indices are basically unlinked nodes keeping track of entry positions and node count
-### Specific array values used in api's
+### Specific array locations used in api's
 ```
 Level:                array[ 0, 0,-1 ]
 Solution count:       array[-1, 0, 0 ]
