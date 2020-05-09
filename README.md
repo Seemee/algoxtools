@@ -16,18 +16,22 @@ Data taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
 ```
 import algoxtools as axt
 import numpy as np
-INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
-array = axt.init( 6, 7 )
+INDEX, META, SOLUTIONCOUNT,SOLUTION, VALUE = 0, -1, 0, 1, -1
 dt = np.int16
-# Rows and cols start from 1!
+
+# Initialize array
+array = axt.init( 6, 7 )
+
+# Assign nodes. Rows and cols start from 1!
 axt.annex_row( array, 1, np.array([ 1, 4, 7 ], dt ) )
 axt.annex_row( array, 2, np.array([ 1, 4 ], dt ) )
 axt.annex_row( array, 3, np.array([ 4, 5, 7 ], dt ) )
 axt.annex_row( array, 4, np.array([ 3, 5, 6 ], dt ) )
 axt.annex_row( array, 5, np.array([ 2, 3, 6, 7 ], dt ) )
 axt.annex_row( array, 6, np.array([ 2, 7 ], dt ) )
+
+# Get result
 ii = array[ INDEX, INDEX ]
-print( 'Solution:' )
 while axt.exact_cover( array ):
     print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
 ```
