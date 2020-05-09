@@ -88,51 +88,6 @@ Initialy it selects the first column with the least number of nodes and the firs
 In subsequent calls mcr_cover selects a next row entry in that column and covers it until all rows are depleted.<br/>
 Returns a boolean False if no more rows are available, else returns a True<br/>
 Balanced by Uncover, this function can be used recurively as well as in a flat loop.<br/>
-### Recursion example:
-```
-import algoxtools as axt
-INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
-ii = array[ INDEX, INDEX ]
-def search(array): # Level up
-    ii[VALUE] += 1
-    if axt.isempty(array):
-        print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
-    else:
-        while axt.mcr_cover(array):
-            search(array)
-            axt.uncover(array)
-    ii[VALUE] -= 1 # Level down
-    
-search( array )
-```
-### Flat loop example:
-```
-INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
-def exact_cover( array ):
-    ii = array[ INDEX, INDEX ]
-    if ii[VALUE] == 0:
-        ii[VALUE] += 1 # First time, Level up
-    else:
-        ii[VALUE] -= 1 # Consecutive time, Level down
-        if ii[VALUE] == 0:
-            return False
-        axt.uncover(array) # Uncover preceding exact cover
-    while True:
-        if axt.isempty(array): # Exact cover found
-            return True
-        elif axt.mcr_cover(array): # Get next row in column with minimum node count (most constrained position) and cover it
-            ii[VALUE] += 1 # Level up
-        else:
-            ii[VALUE] -= 1 # Level down
-            if ii[VALUE] == 0:
-                # Exit
-                return False
-            axt.uncover(array) # Uncover preceding trivial cover
-
-while exact_cover( array ):
-    print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
-```
-
 ### void uncover( array )
 Uncover the nodes previously linked to current row and colum entry in the array (selected by mcr_cover) 
 ### Internal organisation of algoxtools array:
@@ -172,6 +127,51 @@ U       Up link pointer             2
 D       Down link pointer           3
 LINKED  Node or index link status   4
 VALUE   Stores miscellaneous values 5 (-1)
+```
+## Usage examples of internal functions:
+### 1. Recursive solve :
+```
+import algoxtools as axt
+INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+ii = array[ INDEX, INDEX ]
+def search(array): # Level up
+    ii[VALUE] += 1
+    if axt.isempty(array):
+        print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
+    else:
+        while axt.mcr_cover(array):
+            search(array)
+            axt.uncover(array)
+    ii[VALUE] -= 1 # Level down
+    
+search( array )
+```
+### 2. Flat loop solve:
+```
+INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+def exact_cover( array ):
+    ii = array[ INDEX, INDEX ]
+    if ii[VALUE] == 0:
+        ii[VALUE] += 1 # First time, Level up
+    else:
+        ii[VALUE] -= 1 # Consecutive time, Level down
+        if ii[VALUE] == 0:
+            return False
+        axt.uncover(array) # Uncover preceding exact cover
+    while True:
+        if axt.isempty(array): # Exact cover found
+            return True
+        elif axt.mcr_cover(array): # Get next row in column with minimum node count (most constrained position) and cover it
+            ii[VALUE] += 1 # Level up
+        else:
+            ii[VALUE] -= 1 # Level down
+            if ii[VALUE] == 0:
+                # Exit
+                return False
+            axt.uncover(array) # Uncover preceding trivial cover
+
+while exact_cover( array ):
+    print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
 ```
 ## &ast; Unlinking en relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
