@@ -134,7 +134,8 @@ VALUE   Stores miscellaneous values 5 (-1)
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
 In the example the entry at column 1, row 1 is heuristically chosen to be covered.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG" width="300"><br/>
-Since the nodes at the red ones in Columns (1,4,7) and rows (A,B,C,E,F)  are not linked to any other outside nodes. Rows and columns are unlinked just by row and column index without unlinking each individual node.<br/>
+Since the nodes at the red ones in Columns (1,4,7) and rows (A,B,C,E,F)  are not linked to any other outside nodes, they are unlinked just by row and column index without unlinking each individual node.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes%20example.png" width="300"><br/> 
-What I call 'loose' nodes, which are in this case the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are situated in an unlinked row but not in an unlinked column, so they are possibly attached to external nodes and therefore need to be unlinked individually<br/>
+In the example the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are what I call 'loose nodes'.<br/>
+They are situated in an unlinked row but not in an unlinked column, so they are possibly attached to external nodes and therefore need to isolated ie. unlinked on an individual level<br/>
 NB common in most other implementations of Algorithm X only the down link of the upper node and the up link of the down nodes are changed, right and left links do not need to be modified since they are not externally referenced.
