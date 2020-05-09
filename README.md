@@ -57,7 +57,7 @@ array = axt.init( 6, 7 )
 ### annex_row( array, row_number, numpy.array( column 1, column 2, .. column n , numpy.int16) )
 Assigns linked nodes to the specified columns in a specific row.<br/> 
 row and col values should be higher than 1 and cannot exceed numpy.int16 maximum value - 1<br/>
-In order to solve an exact cover, all rows must contain at least one column.<br/>
+In order to solve an exact cover, all rows must contain at least one node.<br/>
 ### Example:
 ```
 axt.annex_row( array, 4, np.array([ 3, 5, 6 ], np.int16 ) )
