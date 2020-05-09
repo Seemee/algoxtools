@@ -147,6 +147,7 @@ def search(array): # Level up
 search( array )
 ```
 ### 2. Flat loop solve:
+NB This example is taken from the source code of algoxtools 
 ```
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
 def exact_cover( array ):
