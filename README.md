@@ -64,7 +64,7 @@ axt.annex_row( array, 4, np.array([ 3, 5, 6 ], np.int16 ) )
 ```
 
 ### bool exact_cover( array )
-This is the main function to flip through exact cover solutions, it returns a boolean True if reached an exact cover and returns a boolean False if finished.
+This is the main function allowing to flip through the exact covers, it returns a boolean True if an exact cover solution is reached and returns a boolean False if finished.
 ### Example:
 ```
 while axt.exact_cover( array )
