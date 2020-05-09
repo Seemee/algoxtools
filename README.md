@@ -63,7 +63,7 @@ This is the main function to flip through exact cover solutions, it returns a bo
 ### Example:
 ```
 while axt.exact_cover( array )
-    print(print( array[ META, SOLUTION : array[ 0,0,-1 ], VALUE ] )
+    print(print( array[ -1, 1 : array[ 0,0,-1 ], -1 ] )
 ```
 
 ## Miscellaneous functions used internally
