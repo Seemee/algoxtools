@@ -83,18 +83,56 @@ if axt.isempty( array ):
 ```
 
 ### bool mcr_cover( array )
-Minimum column rows cover (Or Most-constrained column rows cover) is a composite of internal min_col() and cover() functions.<br/>
+Minimum column rows cover (Or Most-constrained column rows cover) is a composite of the internal min_col() and cover() functions.<br/>
 Initialy it selects the first column with the least number of nodes and the first row in that column as an entry, after which it covers the nodes linked to that entry.<br/>
-In subsequent calls mcr_cover selects a next row and covers it until all rows are depleted.<br/>
-Returns a boolean False if no more rows are available, else returns True<br/>
-Balanced by Uncover, this function be used recurively as well as in a flat loop.<br/>
-### Example:
+In subsequent calls mcr_cover selects a next row entry in that column and covers it until all rows are depleted.<br/>
+Returns a boolean False if no more rows are available, else returns a True<br/>
+Balanced by Uncover, this function can be used recurively as well as in a flat loop.<br/>
+### Recursion example:
 ```
-while axt.mcr_cover( array ):
-    # Recurse
-    search( array )
-    axt.uncover( array )
+import algoxtools as axt
+INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+ii = array[ INDEX, INDEX ]
+def search(array): # Level up
+    ii[VALUE] += 1
+    if axt.isempty(array):
+        print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
+    else:
+        while axt.mcr_cover(array):
+            search(array)
+            axt.uncover(array)
+    ii[VALUE] -= 1 # Level down
+    
+search( array )
 ```
+### Flat loop example:
+```
+INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+def exact_cover( array ):
+    ii = array[ INDEX, INDEX ]
+    if ii[VALUE] == 0:
+        ii[VALUE] += 1 # First time, Level up
+    else:
+        ii[VALUE] -= 1 # Consecutive time, Level down
+        if ii[VALUE] == 0:
+            return False
+        axt.uncover(array) # Uncover preceding exact cover
+    while True:
+        if axt.isempty(array): # Exact cover found
+            return True
+        elif axt.mcr_cover(array): # Get next row in column with minimum node count (most constrained position) and cover it
+            ii[VALUE] += 1 # Level up
+        else:
+            ii[VALUE] -= 1 # Level down
+            if ii[VALUE] == 0:
+                # Exit
+                return False
+            axt.uncover(array) # Uncover preceding trivial cover
+
+while exact_cover( array ):
+    print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
+```
+
 ### void uncover( array )
 Uncover the nodes previously linked to current row and colum entry in the array (selected by mcr_cover) 
 ### Internal organisation of algoxtools array:
