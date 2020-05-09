@@ -68,7 +68,7 @@ This is the main function allowing to flip through the exact covers, it returns 
 ### Example:
 ```
 while axt.exact_cover( array )
-    print(print( array[ -1, 1 : array[ 0,0,-1 ], -1 ] )
+    print( array[ -1, 1 : array[ 0,0,-1 ], -1 ] )
 ```
 
 ## Miscellaneous functions used internally
