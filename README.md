@@ -174,7 +174,7 @@ def exact_cover( array ):
 while exact_cover( array ):
     print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
 ```
-## &ast; Unlinking en relinking nodes:<br/>
+## &ast; Unlinking and relinking nodes:<br/>
 The illustration below which is taken from [Wikipedia](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X) shows how nodes are covered in algoxtools:<br/>
 In the example the entry at column 1, row 1 is heuristically chosen to be covered.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Cover%20example.PNG" width="300"><br/>
