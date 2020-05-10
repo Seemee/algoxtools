@@ -181,5 +181,5 @@ In the example the entry at column 1, row 1 is heuristically chosen to be covere
 Since the nodes at the red ones in Columns (1,4,7) and rows (A,B,C,E,F)  are not linked to any other outside nodes, they are unlinked just by row and column index without unlinking each individual node.<br/>
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes%20example.png" width="300"><br/> 
 In the example the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are what I call 'loose nodes'.<br/>
-They are situated in an unlinked row but not in an unlinked column, so they are possibly attached to external nodes and therefore need to be isolated ie. unlinked and relinked on individual level.<br/>
+They are situated in an unlinked row but not in an unlinked column and are possibly attached to external nodes. So, unlike the other nodes which are left untouched, loose nodes need to be treated individually ie. unlinked and relinked one by one.<br/>
 NB common in most other implementations of Algorithm X only the down link of the upper node and the up link of the down nodes are changed, right and left links do not need to be modified since they are not externally referenced.
