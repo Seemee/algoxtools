@@ -48,7 +48,7 @@ Initializes algoxtools array.<br/>
 Internally the number of columns is one higher than the given value and is used for indexing.<br/>
 The internal number of rows is two higher than the given value and is used for indexing and storing meta data<br/>
 Rows and columns values cannot exceed the np.int16 maximum value - 1 (+32,766)
-*** Example ***:
+### Example:
 ```
 import algoxtools as axt
 array = axt.init( 6, 7 )
