@@ -334,10 +334,13 @@ def mcr_cover(array):
 @cc.export('exact_cover','b1(i2[:,:,:])')
 @njit ( 'b1(i2[:,:,:])', nogil=True)
 def exact_cover( array ):
-    INDEX, VALUE = 0, -1
+    INDEX, VALUE, META, SOLUTIONCOUNT = 0, -1, -1, 0 
     ii = array[ INDEX, INDEX ]
     if ii[VALUE] == 0:
-        # First time, Level up
+        # First time:
+        # Reset solution counter
+        array[ META, SOLUTIONCOUNT, VALUE ] = 0
+        # Level up
         ii[VALUE] += 1
     else:
         # Consecutive time, Level down
