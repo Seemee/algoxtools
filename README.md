@@ -147,10 +147,15 @@ def search(array): # Level up
 search( array )
 ```
 ### 2. Flat loop solver:
-NB This example is taken from the source code of algoxtools 
+This example of an exact_cover function is taken from the source code of algoxtools
+Note that this function can be compiled while still being able to hop in and out to interpreter level with results
 ```
+import algoxtools as axt
+from numba import njit 
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+@njit
 def exact_cover( array ):
+    INDEX, VALUE = 0, -1
     ii = array[ INDEX, INDEX ]
     if ii[VALUE] == 0:
         # First time, Level up
@@ -163,21 +168,24 @@ def exact_cover( array ):
         # Uncover preceding exact cover
         axt.uncover(array)
     while True:
-        # If exact cover found, hop in and out
-        if axt.isempty(array):
-            return True
-        # Else if any left, get next row in column with minimum node count and cover it
-        elif axt.mcr_cover(array):
-            ii[VALUE] += 1 # Level up
+        # If any left, get next row in column with minimum node count and cover it
+        if axt.mcr_cover(array):
+            # Level up
+            ii[VALUE] += 1
+            # If exact cover found, hop in and out with result
+            if axt.isempty(array):
+                return True
         # Else backtrack
         else:
-            ii[VALUE] -= 1 # Level down
+            # Level down
+            ii[VALUE] -= 1
             if ii[VALUE] == 0:
                 # Exit loop
                 return False
             # Uncover preceding trivial cover
             axt.uncover(array)
 
+ii = array[ INDEX, INDEX ]
 while exact_cover( array ):
     print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
 ```
