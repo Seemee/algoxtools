@@ -334,27 +334,36 @@ def mcr_cover(array):
 @cc.export('exact_cover','b1(i2[:,:,:])')
 @njit ( 'b1(i2[:,:,:])', nogil=True)
 def exact_cover( array ):
-    INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
+    INDEX, VALUE = 0, -1
     ii = array[ INDEX, INDEX ]
     if ii[VALUE] == 0:
-        ii[VALUE] += 1 # First time, Level up
+        # First time, Level up
+        ii[VALUE] += 1
     else:
-        ii[VALUE] -= 1 # Consecutive time, Level down
+        # Consecutive time, Level down
+        ii[VALUE] -= 1
         if ii[VALUE] == 0:
             return False
-        uncover(array) # Uncover preceding exact cover
+        # Uncover preceding exact cover
+        uncover(array)
     while True:
-        if isempty(array): # Exact cover found
-            return True
-        elif mcr_cover(array): # Get next row in column with minimum node count (most constrained position) and cover it
-            ii[VALUE] += 1 # Level up
+        # If any left, get next row in column with minimum node count and cover it
+        if mcr_cover(array):
+            # Level up
+            ii[VALUE] += 1
+            # If exact cover found, hop in and out with result
+            if isempty(array):
+                return True
+        # Else backtrack
         else:
-            ii[VALUE] -= 1 # Level down
+            # Level down
+            ii[VALUE] -= 1
             if ii[VALUE] == 0:
-                # Exit
+                # Exit loop
                 return False
-            uncover(array) # Uncover preceding trivial cover
-    
+            # Uncover preceding trivial cover
+            uncover(array)
+
 if __name__ == '__main__':
     #cc.compile()
     """
