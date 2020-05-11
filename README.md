@@ -153,23 +153,30 @@ INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
 def exact_cover( array ):
     ii = array[ INDEX, INDEX ]
     if ii[VALUE] == 0:
-        ii[VALUE] += 1 # First time, Level up
+        # First time, Level up
+        ii[VALUE] += 1
     else:
-        ii[VALUE] -= 1 # Consecutive time, Level down
+        # Consecutive time, Level down
+        ii[VALUE] -= 1
         if ii[VALUE] == 0:
             return False
-        axt.uncover(array) # Uncover preceding exact cover
+        # Uncover preceding exact cover
+        axt.uncover(array)
     while True:
-        if axt.isempty(array): # Exact cover found
+        # If exact cover found, hop in and out
+        if axt.isempty(array):
             return True
-        elif axt.mcr_cover(array): # Get next row in column with minimum node count (most constrained position) and cover it
+        # Else if any left, get next row in column with minimum node count and cover it
+        elif axt.mcr_cover(array):
             ii[VALUE] += 1 # Level up
+        # Else backtrack
         else:
             ii[VALUE] -= 1 # Level down
             if ii[VALUE] == 0:
-                # Exit
+                # Exit loop
                 return False
-            axt.uncover(array) # Uncover preceding trivial cover
+            # Uncover preceding trivial cover
+            axt.uncover(array)
 
 while exact_cover( array ):
     print( array[ META, SOLUTION : ii[VALUE], VALUE ] )
