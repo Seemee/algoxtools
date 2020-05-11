@@ -6,7 +6,7 @@ The array space used by algoxtools is 3d, arranged in rows, columns, the third d
 Algoxtools facilitates unlinking and relinking of rows and columns at once by eleborate indexing which avoids handling each individual node chain*.<br/>Moreover the indexing used shakes off the need for recursion, which allows for effortless returns to caller level from a single function.<br/>
 The array organisation is sparse and uses 16 bit ints. If needed, int size can be easily adapted.<br/>Dynamic allocation of nodes could further optimize use of memory and squeeze out a bit of performance gain, but remains to be implemented.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://gesis.mybinder.org/binder/v2/gh/Seemee/algoxtools/d7654818833f60dc637c7b233de0ad379506a080) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1LhF6UHn5R6Z94SIRCXg0aXCgbkTtJ94Q/view?usp=sharing)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://gesis.mybinder.org/binder/v2/gh/Seemee/algoxtools/06e64f70dbade600be6a30b57424ee7fc5a68bb1) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1LhF6UHn5R6Z94SIRCXg0aXCgbkTtJ94Q/view?usp=sharing)
 ## Installation
 ```
 pip install algoxtools
