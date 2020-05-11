@@ -129,7 +129,7 @@ LINKED  Node or index link status   4
 VALUE   Stores miscellaneous values 5 (-1)
 ```
 ## Usage examples of internal functions:
-### 1. Recursive solve :
+### 1. Recursive solver:
 ```
 import algoxtools as axt
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
@@ -146,7 +146,7 @@ def search(array): # Level up
     
 search( array )
 ```
-### 2. Flat loop solve:
+### 2. Flat loop solver:
 NB This example is taken from the source code of algoxtools 
 ```
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
