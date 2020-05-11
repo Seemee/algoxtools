@@ -155,10 +155,13 @@ from numba import njit
 INDEX, META, SOLUTIONCOUNT, VALUE, SOLUTION = 0, -1, 0, -1, 1
 @njit
 def exact_cover( array ):
-    INDEX, VALUE = 0, -1
+    INDEX, VALUE, META, SOLUTIONCOUNT = 0, -1, -1, 0 
     ii = array[ INDEX, INDEX ]
     if ii[VALUE] == 0:
-        # First time, Level up
+        # First time:
+        # Reset solution counter
+        array[ META, SOLUTIONCOUNT, VALUE ] = 0
+        # Level up
         ii[VALUE] += 1
     else:
         # Consecutive time, Level down
@@ -166,14 +169,14 @@ def exact_cover( array ):
         if ii[VALUE] == 0:
             return False
         # Uncover preceding exact cover
-        axt.uncover(array)
+        uncover(array)
     while True:
         # If any left, get next row in column with minimum node count and cover it
-        if axt.mcr_cover(array):
+        if mcr_cover(array):
             # Level up
             ii[VALUE] += 1
             # If exact cover found, hop in and out with result
-            if axt.isempty(array):
+            if isempty(array):
                 return True
         # Else backtrack
         else:
@@ -183,7 +186,7 @@ def exact_cover( array ):
                 # Exit loop
                 return False
             # Uncover preceding trivial cover
-            axt.uncover(array)
+            uncover(array)
 
 ii = array[ INDEX, INDEX ]
 while exact_cover( array ):
