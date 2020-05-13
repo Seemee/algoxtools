@@ -148,7 +148,7 @@ search( array )
 ```
 ### 2. Flat loop solver:
 This example of an exact_cover function is taken from the source code of algoxtools
-Note that this function can be compiled while still being able to hop in and out to interpreter level with results
+Note that this function can be compiled while still being able to hop in and out to interpreter level with intermediate results
 ```
 import algoxtools as axt
 from numba import njit 
