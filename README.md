@@ -200,4 +200,5 @@ Since the nodes at the red ones in Columns (1,4,7) and rows (A,B,C,E,F)  are not
 <img src="https://github.com/Seemee/algoxtools/blob/master/images/Loose%20nodes%20example.png" width="300"><br/> 
 In the example the remaining ones in the red boxes, (C5,E2,E3,E6 and F2) are what I call 'loose nodes'.<br/>
 They are situated in an unlinked row but not in an unlinked column and are possibly attached to external nodes. So, unlike the other nodes which are left untouched, loose nodes are handled individually ie. unlinked and relinked one by one.<br/>
-NB common in most other implementations of Algorithm X only the down-link of the upper nodes and the up-link of the down nodes are changed, right- and left-links do not need to be modified since each node in the row is being made inactive, so they are never externally referenced.
+
+NB: Common in most other implementations of Algorithm X, only the down-link of the upper node and the up-link of the lower nodes are changed, right- and left-links do not need to be modified, like the Loose Nodes since each node in the row is being made inactive, so they are never externally referenced.
